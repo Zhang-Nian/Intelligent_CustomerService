@@ -1,0 +1,50 @@
+swagger: "2.0"
+
+info:
+  title: "NLP API"
+  version: "1.0"
+  description: "all interface for NLP tasks"
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+schemes:
+- "https"
+- "http"
+
+paths:
+  /NLP/dependency_analysis:
+    post:
+      tags:
+      - "store"
+      summary: "Place an order for a pet"
+      description: ""
+      operationId: app.dependency_analysis
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "sentence_json"
+        description: "order placed for purchasing the pet"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Order"
+        "404":
+          description: "Invalid Order"
+  
+definitions:
+  Order:
+    type: "object"
+    properties:
+      sentence:
+        type: "string"
+        description: "a simple sentence"
+        format: "string"
+
