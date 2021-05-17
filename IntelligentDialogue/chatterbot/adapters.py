@@ -1,7 +1,7 @@
-
 class Adapter(object):
     """
     A superclass for all adapter classes.
+
     :param chatbot: A ChatBot instance.
     """
 

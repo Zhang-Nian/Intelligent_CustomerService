@@ -1,12 +1,16 @@
 from chatterbot.storage import StorageAdapter
 
+
 class SQLStorageAdapter(StorageAdapter):
     """
     The SQLStorageAdapter allows ChatterBot to store conversation
     data in any database supported by the SQL Alchemy ORM.
+
     All parameters are optional, by default a sqlite database is used.
+
     It will check if tables are present, if they are not, it will attempt
     to create the required tables.
+
     :keyword database_uri: eg: sqlite:///database_test.sqlite3',
         The database_uri can be specified to choose database driver.
     :type database_uri: str
@@ -39,8 +43,8 @@ class SQLStorageAdapter(StorageAdapter):
                 dbapi_connection.execute('PRAGMA journal_mode=WAL')
                 dbapi_connection.execute('PRAGMA synchronous=NORMAL')
 
-        if not self.engine.dialect.has_table(self.engine, 'Statement'):
-            self.create_database()
+        #if not self.engine.dialect.has_table(self.engine, 'Statement'):
+        self.create_database()
 
         self.Session = sessionmaker(bind=self.engine, expire_on_commit=True)
 
@@ -365,5 +369,3 @@ class SQLStorageAdapter(StorageAdapter):
             self.logger.exception(statement_text)
         finally:
             session.close()
-
-

@@ -5,12 +5,14 @@ from chatterbot.tagging import PosLemmaTagger
 
 class StorageAdapter(object):
     """
-    This is an abstract class that represents the interface that all storage adapters should implement.
+    This is an abstract class that represents the interface
+    that all storage adapters should implement.
     """
 
     def __init__(self, *args, **kwargs):
         """
         Initialize common attributes shared by all storage adapters.
+
         :param str tagger_language: The language that the tagger uses to remove stopwords.
         """
         self.logger = kwargs.get('logger', logging.getLogger(__name__))
@@ -24,6 +26,7 @@ class StorageAdapter(object):
     def get_model(self, model_name):
         """
         Return the model class for a given model name.
+
         model_name is case insensitive.
         """
         get_model_method = getattr(self, 'get_%s_model' % (
@@ -35,6 +38,7 @@ class StorageAdapter(object):
     def get_object(self, object_name):
         """
         Return the class for a given object name.
+
         object_name is case insensitive.
         """
         get_model_method = getattr(self, 'get_%s_object' % (
@@ -79,27 +83,34 @@ class StorageAdapter(object):
         of attributes. Only objects which contain
         all listed attributes and in which all values
         match for all listed attributes will be returned.
+
         :param page_size: The maximum number of records to load into
             memory at once when returning results.
             Defaults to 1000
+
         :param order_by: The field name that should be used to determine
             the order that results are returned in.
             Defaults to None
+
         :param tags: A list of tags. When specified, the results will only
             include statements that have a tag in the provided list.
             Defaults to [] (empty list)
+
         :param exclude_text: If the ``text`` of a statement is an exact match
             for the value of this parameter the statement will not be
             included in the result set.
             Defaults to None
+
         :param exclude_text_words: If the ``text`` of a statement contains a
             word from this list then the statement will not be included in
             the result set.
             Defaults to [] (empty list)
+
         :param persona_not_startswith: If the ``persona`` field of a
             statement starts with the value specified by this parameter,
             then the statement will not be returned in the result set.
             Defaults to None
+
         :param search_text_contains: If the ``search_text`` field of a
             statement contains a word that is in the string provided to
             this parameter, then the statement will be included in the
@@ -164,4 +175,3 @@ class StorageAdapter(object):
         Typically this indicates that the method should be implement in a subclass.
         """
         pass
-

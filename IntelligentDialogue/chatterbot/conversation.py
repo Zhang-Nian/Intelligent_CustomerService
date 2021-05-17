@@ -1,11 +1,12 @@
 from pytz import UTC
 from datetime import datetime
-#from dateutil import parser as date_parser
+# from dateutil import parser as date_parser
 
 
 class StatementMixin(object):
     """
-    This class has shared methods used to normalize different statement models.
+    This class has shared methods used to
+    normalize different statement models.
     """
 
     statement_field_names = [
@@ -59,11 +60,13 @@ class StatementMixin(object):
 
         return data
 
-    
+
 class Statement(StatementMixin):
     """
-    A statement represents a single spoken entity, sentence or phrase that someone can say.
+    A statement represents a single spoken entity, sentence or
+    phrase that someone can say.
     """
+
     __slots__ = (
         'id',
         'text',
@@ -79,6 +82,7 @@ class Statement(StatementMixin):
     )
 
     def __init__(self, text, in_response_to=None, **kwargs):
+
         self.id = kwargs.get('id')
         self.text = str(text)
         self.search_text = kwargs.get('search_text', '')
@@ -97,7 +101,8 @@ class Statement(StatementMixin):
             self.created_at = self.created_at.replace(tzinfo=UTC)
 
         # This is the confidence with which the chat bot believes
-        # this is an accurate response. This value is set when the statement is returned by the chat bot.
+        # this is an accurate response. This value is set when the
+        # statement is returned by the chat bot.
         self.confidence = 0
 
         self.storage = None
@@ -113,4 +118,3 @@ class Statement(StatementMixin):
         Save the statement in the database.
         """
         self.storage.update(self)
-    
