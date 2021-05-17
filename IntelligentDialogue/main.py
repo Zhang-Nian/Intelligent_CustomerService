@@ -1,7 +1,11 @@
 import os
 import sys
-import PreProcessing
+from chatRobot.chatRobot import ChatBot
+
 
 if __name__ == "__main__":
-    print("hello world")
+
+    chatbot = ChatBot('Ron Obvious')
+    print("robot init finish")
+    
 
