@@ -31,3 +31,34 @@ class Trainer(object):
 
         return input_statement
 
+
+    def train(self, *args, **kwargs):
+        """
+        This method must be overridden by a child class.
+        """
+        raise self.TrainerInitializationException()
+
+
+    class TrainerInitializationException(Exception):
+        """
+        Exception raised when a base class has not overridden
+        the required methods on the Trainer base class.
+        """
+
+        def __init__(self, message=None):
+            default = (
+                'A training class must be specified before calling train(). '
+                'See http://chatterbot.readthedocs.io/en/stable/training.html'
+            )
+            super().__init__(message or default)
+
+    
+    def _generate_export_data(self):
+        result = []
+        for statement in self.chatbot.storage.filter():
+            if statement.in_response_to:
+                result.append([statement.in_response_to, statement.text])
+
+        return result
+
+
