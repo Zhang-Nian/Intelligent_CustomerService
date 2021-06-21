@@ -1,0 +1,7 @@
+心理咨询问答       https://github.com/chatopera/efaqa-corpus-zh#%E8%AF%AD%E6%96%99%E6%96%87%E4%BB%B6
+对话语料             https://github.com/candlewill/Dialog_Corpus
+豆瓣对话             https://github.com/MarkWuNLP/MultiTurnResponseSelection  
+中文对话整理       https://github.com/codemayq/chinese_chatbot_corpus
+美剧多轮对话       https://github.com/zll17/TV4Dialog
+保险语料             https://github.com/chatopera/insuranceqa-corpus-zh
+百度百科问答数据     https://github.com/YmingZhu/nlp_chinese_corpus
